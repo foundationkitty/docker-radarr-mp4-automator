@@ -1,4 +1,4 @@
-FROM linuxserver/radarr
+FROM linuxserver/radarr:latest
 
 RUN \
   apt-get update && \
@@ -28,6 +28,7 @@ RUN \
   pip install qtfaststart && \
   git clone git://github.com/mdhiggins/sickbeard_mp4_automator.git /sickbeard_mp4_automator/ && \
   touch /sickbeard_mp4_automator/info.log && \
+  touch /sickbeard_mp4_automator/index.log && \
   chmod a+rwx -R /sickbeard_mp4_automator && \
   ln -s /downloads /data && \
   ln -s /config_mp4_automator/autoProcess.ini /sickbeard_mp4_automator/autoProcess.ini && \
@@ -35,5 +36,3 @@ RUN \
 	/tmp/* \
 	/var/lib/apt/lists/* \
 	/var/tmp/*
-
-VOLUME config_mp4_automator
